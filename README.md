@@ -18,7 +18,7 @@ _Collaborators:_ Mike Rose (@mike-cumulus)
 
 2. Add a `contextGroup` key to `cdk.json`, set up a default group name _(optional)_, and add named groups.
  
-The default group name is used if you do not specify a group name when running CDK commands.
+    The default group name is used if you do not specify a group name when running CDK commands.
 
 Example:
 
@@ -47,7 +47,7 @@ Example:
 
 3. Import and use the module in your CDK project.
 
-For example, in `app.py` you can do the following:
+    For example, in `app.py` you can do the following:
 
 ```python
 from ContextGroup import *
