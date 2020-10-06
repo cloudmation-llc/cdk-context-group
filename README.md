@@ -71,4 +71,6 @@ MyStack(app, 'my-stack', context_group=context_group)
 
 4. When running CDK commands, pass the command line flag `-c ctxgroup=group_name_here` to activate a specific context group. If you do not specify one, then the default configured in `cdk.json` is used as the fallback.
 
-    If you did not provide a default name, and did not specify one on the command line, then an error condition is raised.
+    **Full example:** `cdk --profile my_profile -c ctxgroup=dev synth`
+
+    If you did not provide a default name, and did not specify one on the command line, then an error condition will be raised.
