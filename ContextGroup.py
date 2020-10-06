@@ -1,7 +1,27 @@
-"""The ContextGroup object represents one or more CDK context variables grouped by a common name."""
+"""
+Tools for working with context variable hierarchies in CDK projects.
+
+Classes:
+
+    ContextGroup
+"""
+
 class ContextGroup:
 
-    def __init__(self, construct) -> None:        
+    """
+    The ContextGroup object represents one or more CDK context variables grouped by a common name.
+    """
+    def __init__(self, construct) -> None:    
+        """
+        Creates a new ContextGroup object using access to the context from the provided CDK
+        construct node.
+
+        Parameters
+        ----------
+            construct: aws_cdk.core.ConstructNode
+                The CDK node to use for querying context values
+        """
+
         # Get the context groups node from CDK context
         context_groups = construct.node.try_get_context('contextGroups')
 
@@ -23,6 +43,8 @@ class ContextGroup:
             setattr(self, key, value)
 
     def __repr__(self) -> str:
+        """Generate a string representation of this ContextGroup"""
+        
         # Comprehension trickery to print out group attributes as a string (e.g. for print(), logging)
         return 'ContextGroup(' + ', '.join([f'{key}={value}' for key, value in self.__dict__.items()]) + ')'
 
