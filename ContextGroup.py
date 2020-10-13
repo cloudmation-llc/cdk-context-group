@@ -50,6 +50,10 @@ class ContextGroup:
         for key, value in context_group.items():
             setattr(self, key, value)
 
+        # Copy keys from 'all' context group if defined
+        for key, value in context_groups.get('all', {}).items():
+            setattr(self, key, value)
+
     def __repr__(self) -> str:
         """Generate a string representation of this ContextGroup"""
         
