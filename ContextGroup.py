@@ -29,22 +29,22 @@ class ContextGroup:
         context_groups = construct.node.try_get_context('contextGroups')
 
         # Look for a context group name passed in directly
-        self.context_group_name = group_name
+        self.name = group_name
 
-        if self.context_group_name is None:
+        if self.name is None:
             # Look for a context group name configured in cdk.json
-            self.context_group_name = construct.node.try_get_context('ctxgroup')
+            self.name = construct.node.try_get_context('ctxgroup')
 
-        if self.context_group_name is None:
+        if self.name is None:
             # Look for a default context group for fallback
-            self.context_group_name = context_groups.get('default')
+            self.name = context_groups.get('default')
 
             # Validate
-            if self.context_group_name is None:
+            if self.name is None:
                 raise LookupError('Could not find a context group to load')
 
         # Get the context group
-        context_group = context_groups.get(self.context_group_name)
+        context_group = context_groups.get(self.name)
         
         # Copy context keys to this object
         for key, value in context_group.items():
