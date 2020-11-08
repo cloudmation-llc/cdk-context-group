@@ -45,6 +45,12 @@ class ContextGroup:
 
         # Get the context group
         context_group = context_groups.get(self.name)
+
+        # Does the context group have an inherits key?
+        if 'inherits' in context_group:
+            base_group = context_groups.get(context_group['inherits'])
+            for key, value in base_group.items():
+                setattr(self, key, value)    
         
         # Copy context keys to this object
         for key, value in context_group.items():
